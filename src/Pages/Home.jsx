@@ -27,7 +27,7 @@ const Home = () => {
   useEffect(() => {
     if (autoloading) return;
     if (!isAuthenticated) return navigate("/login");
-  }, [isAuthenticated]);
+  }, [isAuthenticated , autoloading]);
 
   useEffect(() => {
     axios

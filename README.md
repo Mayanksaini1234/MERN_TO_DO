@@ -1,31 +1,38 @@
-# React + Vite
+# ✅ To-Do App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean and elegant full-stack To-Do web application built with **React**, **Node.js**, **Express**, and **MongoDB**. It helps users organize their daily tasks, mark them as completed, and manage productivity — all with a beautiful UI.
 
-Currently, two official plugins are available:
+---
+## 🔗 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[🔗 Hosted Frontend on Netlify](https://mern-to-c19z5otcd-mayank-sainis-projects.vercel.app/)  
+[🔗 Hosted Backend on Render](https://todoapppractice.onrender.com)
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔐 **Authentication** (Register / Login)
+- ✅ **Add, Update, and Delete Tasks**
+- 📋 **Mark tasks as Completed / Pending**
+- 🎨 **Stylish and Responsive UI**
+- 🔁 **Real-time updates**
+- 🌐 Hosted on **Render** (backend)
+
+---
+
+## 🛠️ Tech Stack
+
+| Frontend                | Backend            | Database   |
+|-------------------------|--------------------|------------|
+| React + Vite            | Node.js + Express  | MongoDB    |
+| TailwindCSS             | REST API           | Mongoose   |
+| React Router DOM        | JWT Auth           |            |
+| Axios + Toast (Sonner)  | CORS + Cookies     |            |
+
+---
 
 
-<!-- End Points-
-
-USER
-/api/user/my
-/api/user/login
-/api/user/logout
-/api/user/register
-
-TASKS
-get my task -> /api/task/tasks
-post my task -> /api/task/tasks
-put -> /api/task/:id
-delete -> /api/task/:id
-
-Backend URL => https://todoapppractice.onrender.com <br>
-
- -->
+## 🛠️ Installation 
+```bash
+git clone https://github.com/Mayanksaini1234/MERN_TO_DO.git
+npm install
+npm run dev
