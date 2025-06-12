@@ -5,12 +5,12 @@ A clean and elegant full-stack To-Do web application built with **React**, **Nod
 ---
 ## 🔗 Live Demo
 
-[🔗 Hosted Frontend on Netlify](https://mern-to-do-mu.vercel.app/)  
+[🔗 Hosted Frontend on Vercel](https://mern-to-do-mu.vercel.app/)  
 [🔗 Hosted Backend on Render](https://todoapppractice.onrender.com)
 
 ## ✨ Features
 
-- 🔐 **Authentication** (Register / Login)
+- 🔐 **Authentication** (Register / Login) + OAuthentication 
 - ✅ **Add, Update, and Delete Tasks**
 - 📋 **Mark tasks as Completed / Pending**
 - 🎨 **Stylish and Responsive UI**
