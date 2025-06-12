@@ -5,7 +5,7 @@ A clean and elegant full-stack To-Do web application built with **React**, **Nod
 ---
 ## 🔗 Live Demo
 
-[🔗 Hosted Frontend on Netlify](https://mern-to-c19z5otcd-mayank-sainis-projects.vercel.app/)  
+[🔗 Hosted Frontend on Netlify](https://mern-to-do-mu.vercel.app/)  
 [🔗 Hosted Backend on Render](https://todoapppractice.onrender.com)
 
 ## ✨ Features
