@@ -42,6 +42,7 @@ const AppWrapper = () => {
   );
 };
 
+// export const server = "http://localhost:3000";
 export const server = "https://todoapppractice.onrender.com";
 const root = createRoot(document.getElementById("root"));
 root.render(<AppWrapper />);

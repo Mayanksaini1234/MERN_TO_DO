@@ -2,15 +2,12 @@ import React, { useContext, useEffect } from "react";
 import { ToDoContext } from "../context/ToDOContext";
 import { Loader2, User, Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Profile = () => {
   const { user, setUSer, loader, setLoader , isAuthenticated , autoloading } = useContext(ToDoContext);
 const navigate = useNavigate();
 
-  useEffect(() => {
-    if (autoloading) return;
-    if (!isAuthenticated) return navigate("/login");
-  }, [isAuthenticated]);
 
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-gradient-to-b from-yellow-50 to-yellow-100 py-12 px-4 sm:px-6 lg:px-8">

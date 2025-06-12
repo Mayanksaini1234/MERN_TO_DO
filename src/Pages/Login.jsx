@@ -55,7 +55,7 @@ const Login = () => {
     } catch (error) {
       console.log(error);
       setLoader(false);
-      toast.error(error.response.data.message);
+      toast.error(error?.response?.data?.message || "Login Error");
       setIsAuthenticated(false);
     }
   };
@@ -82,7 +82,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 onChange={inputHandler}
-                defaultValue={formData.email}
+                value={formData.email}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
                 required
               />
@@ -99,7 +99,7 @@ const Login = () => {
                 type="password"
                 name="password"
                 onChange={inputHandler}
-                defaultValue={formData.password}
+                value={formData.password}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
                 required
               />
@@ -112,7 +112,8 @@ const Login = () => {
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-all duration-300"
               disabled={loader}
             >
-              {loader ? <Loader className="animate-spin w-3 h-3" /> : "Login"}
+              {loader ? <Loader className="animate-spin w-5 h-5" />
+ : "Login"}
             </Button>
           </div>
 

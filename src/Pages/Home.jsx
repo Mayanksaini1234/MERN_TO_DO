@@ -9,10 +9,10 @@ import {
   Plus,
   CheckCircle2,
   Sparkles,
-  Pencil,
   Trash2,
   Clock,
   CheckCircle,
+  TableProperties,
 } from "lucide-react";
 
 const Home = () => {
@@ -25,21 +25,18 @@ const Home = () => {
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
-    if (autoloading) return;
-    if (!isAuthenticated) return navigate("/login");
-  }, [isAuthenticated , autoloading]);
-
-  useEffect(() => {
-    axios
-      .get(`${server}/api/task/tasks`, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        setTaskList(res.data.Task);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    
+         axios
+          .get(`${server}/api/task/tasks`, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            setTaskList(res.data.Task);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+       
   }, [refresh]);
 
   const dataHandler = (e) => {
@@ -76,7 +73,8 @@ const Home = () => {
       }
     } catch (error) {
       setLoader(false);
-      toast.error("Task is not added and there is an error");
+      toast.error(error.response.data.message);
+
       console.log(error);
     }
   };
@@ -255,14 +253,17 @@ const Home = () => {
                           <div className="flex items-center gap-2 text-xs text-gray-500">
                             <Clock className="w-3 h-3" />
                             <span>
-                              Created {new Date(task.createdAt).toLocaleDateString()}
+                              Created{" "}
+                              {new Date(task.createdAt).toLocaleDateString()}
                             </span>
                           </div>
-                          <span className={`text-xs px-3 py-1 rounded-full flex items-center gap-1 ${
-                            task.isCompleted 
-                              ? "bg-green-100 text-green-800" 
-                              : "bg-yellow-100 text-yellow-800"
-                          }`}>
+                          <span
+                            className={`text-xs px-3 py-1 rounded-full flex items-center gap-1 ${
+                              task.isCompleted
+                                ? "bg-green-100 text-green-800"
+                                : "bg-yellow-100 text-yellow-800"
+                            }`}
+                          >
                             <CheckCircle className="w-3 h-3" />
                             {task.isCompleted ? "Completed" : "Pending"}
                           </span>
