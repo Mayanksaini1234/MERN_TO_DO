@@ -7,6 +7,7 @@ import Login from "./Pages/Login.jsx";
 import NotFound from "./Pages/NotFound.jsx";
 import Register from "./Pages/Register.jsx";
 import Profile from "./Pages/Profile.jsx";
+import OAuthSuccess from './Pages/OAuthSuccess.jsx';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/myProfile" element={<Profile />} />
+        <Route path='/oauth-success' element={<OAuthSuccess/>} />
       </Routes>
     </BrowserRouter>
   );

@@ -6,6 +6,8 @@ import axios from "axios";
 import { toast } from "sonner";
 import { Loader } from "lucide-react";
 import { ToDoContext } from "../context/ToDOContext";
+import { FcGoogle } from "react-icons/fc";
+
 const Register = () => {
 
   const { isAuthenticated, setIsAuthenticated } = useContext(ToDoContext);
@@ -62,6 +64,14 @@ const Register = () => {
       toast.error(error.response.data.message);
       setLoader(false);
       setIsAuthenticated(false);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      window.location.href = `${server}/api/user/google`;
+    } catch (error) {
+      toast.error("Failed to initiate Google login");
     }
   };
 
@@ -134,34 +144,53 @@ const Register = () => {
           <div>
             <Button
               type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-all duration-300"
+              className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={loader}
             >
               {loader ? (
-                <Loader className="animate-spin w-3 h-3" />
+                <Loader className="animate-spin w-5 h-5" />
               ) : (
-                "Register"
+                "Create Account"
               )}
             </Button>
           </div>
-
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">OR</span>
-            </div>
-          </div>
-
-          <div>
-            <Link to={"/login"}>
-              <Button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-all duration-300">
-                Sign In
-              </Button>
-            </Link>
-          </div>
         </form>
+
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-300"></div>
+          </div>
+          <div className="relative flex justify-center text-sm">
+            <span className="px-2 bg-white text-gray-500">OR</span>
+          </div>
+        </div>
+
+        <div>
+          <Button
+            onClick={handleGoogleLogin}
+            className="w-full flex items-center justify-center gap-2 py-2.5 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-all duration-300"
+          >
+            <FcGoogle className="w-5 h-5" />
+            Continue with Google
+          </Button>
+        </div>
+
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-300"></div>
+          </div>
+          <div className="relative flex justify-center text-sm">
+            <span className="px-2 bg-white text-gray-500">OR</span>
+          </div>
+        </div>
+
+        <div>
+          <Link to={"/login"}>
+            <Button className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-all duration-300">
+              Sign In to Existing Account
+            </Button>
+          </Link>
+        </div>
       </div>
     </div>
   );
