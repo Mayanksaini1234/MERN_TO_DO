@@ -36,3 +36,10 @@ A clean and elegant full-stack To-Do web application built with **React**, **Nod
 git clone https://github.com/Mayanksaini1234/MERN_TO_DO.git
 npm install
 npm run dev
+
+# router.get("/tasks", isAuthenticated, getMyTask)
+# router.route("/tasks")
+#     .post( isAuthenticated , postTask)
+# router.route("/:id")
+#  .put(isAuthenticated , updateTask)
+#  .delete(isAuthenticated ,  deleteParticularTask)

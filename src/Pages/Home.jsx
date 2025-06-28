@@ -25,18 +25,16 @@ const Home = () => {
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
-    
-         axios
-          .get(`${server}/api/task/tasks`, {
-            withCredentials: true,
-          })
-          .then((res) => {
-            setTaskList(res.data.Task);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-       
+    axios
+      .get(`${server}/api/task/tasks`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setTaskList(res.data.Task);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [refresh]);
 
   const dataHandler = (e) => {
@@ -50,6 +48,8 @@ const Home = () => {
   const submitHandler = async (e) => {
     setLoader(true);
     e.preventDefault();
+    if(!isAuthenticated) return navigate("/login");
+
     const { title, discription } = data;
     try {
       const { data } = await axios.post(
@@ -70,6 +70,7 @@ const Home = () => {
         setData({ title: "", discription: "" });
         setLoader(false);
         setRefresh((prev) => !prev);
+        // It simple change the previos value to its opposite
       }
     } catch (error) {
       setLoader(false);
