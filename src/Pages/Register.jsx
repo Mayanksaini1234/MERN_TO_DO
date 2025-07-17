@@ -40,6 +40,7 @@ const Register = () => {
           name,
           email,
           password,
+            // data ->req.body 
         },
         {
           headers: {
@@ -97,7 +98,6 @@ const Register = () => {
                 Name
               </label>
               <input
-                id="name"
                 type="text"
                 name="name"
                 onChange={inputHandler}

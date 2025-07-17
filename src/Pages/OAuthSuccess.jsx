@@ -10,7 +10,7 @@ const OAuthSuccess = () => {
     const token = searchParams.get("token");
     console.log(token)
     if (token) {
-      localStorage.setItem("token", token); // ✅ Store token
+      localStorage.setItem("token", token); // ✅ Store token-> Good practice 
       navigate("/"); // or /dashboard
     } else {
       navigate("/login");
