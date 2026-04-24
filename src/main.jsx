@@ -26,11 +26,12 @@ const AppWrapper = () => {
         console.log(err);
         setIsAuthenticated(false)
         setUser({})
+      }).finally(()=>{
         setLoader(false)
-      }).finally(
-        setAutoloading(false)
+        setAutoloading(false);
+      }
       )
-  },[isAuthenticated]);
+  },[]);
 
   return (
     <ToDoContext.Provider
@@ -42,7 +43,7 @@ const AppWrapper = () => {
   );
 };
 
-// export const server = "http://localhost:3000";
-export const server = "https://todoapppractice.onrender.com";
+export const server = "http://localhost:3000";
+// export const server = "https://todoapppractice.onrender.com";
 const root = createRoot(document.getElementById("root"));
 root.render(<AppWrapper />);

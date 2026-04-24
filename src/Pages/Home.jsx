@@ -63,7 +63,7 @@ const Home = () => {
             "Content-Type": "application/json",
           },
           withCredentials: true,
-        }
+        },
       );
       if (data) {
         toast.success("Task is added!");
@@ -74,18 +74,17 @@ const Home = () => {
       }
     } catch (error) {
       console.log(error);
-      console.log(error.response);        // full response
-      console.log(error.response.data);   // actual backend data
-
+      console.log(error.response); // full response
+      console.log(error.response.data); // actual backend data
 
       if (!error.response) {
         toast.error("Server not responding / Network error");
         return;
       }
-    
+
       const status = error.response.status;
       const data = error.response.data;
-    
+
       if (status === 429) {
         toast.error(data?.message || "Too many requests");
         return;
@@ -94,7 +93,7 @@ const Home = () => {
       const errors = error.response?.data?.errors;
 
       if (errors && Array.isArray(errors)) {
-        errors.forEach(err => toast.error(err));
+        errors.forEach((err) => toast.error(err));
       } else {
         toast.error(error.response?.data?.message || "Something went wrong");
       }
@@ -113,7 +112,7 @@ const Home = () => {
             "Content-Type": "application/json",
           },
           withCredentials: true,
-        }
+        },
       );
       if (data) {
         setRefresh((prev) => !prev);
@@ -121,6 +120,20 @@ const Home = () => {
       }
     } catch (error) {
       console.log(error);
+
+      if (!error.response) {
+        toast.error("Server not responding / Network error");
+        return;
+      }
+
+      const status = error.response.status;
+      const data = error.response.data;
+
+      if (status === 429) {
+        toast.error(data?.message || "Too many requests");
+        return;
+      }
+
       toast.error("Task is not Updated!");
     }
   };
@@ -136,6 +149,19 @@ const Home = () => {
       }
     } catch (error) {
       console.log(error);
+
+      if (!error.response) {
+        toast.error("Server not responding / Network error");
+        return;
+      }
+
+      const status = error.response.status;
+      const data = error.response.data;
+
+      if (status === 429) {
+        toast.error(data?.message || "Too many requests");
+        return;
+      }
       toast.error("Task is not deleted ,there is an error!");
     }
   };
@@ -245,27 +271,30 @@ const Home = () => {
                         <div
                           key={task._id}
                           className={`group rounded-xl p-4 transition-all duration-300 hover:shadow-md border
-                            ${isCompleted
-                              ? "bg-green-50/70 border-green-100"
-                              : "bg-white/50 hover:bg-white/80 border-yellow-100"
+                            ${
+                              isCompleted
+                                ? "bg-green-50/70 border-green-100"
+                                : "bg-white/50 hover:bg-white/80 border-yellow-100"
                             }`}
                         >
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
                               <h3
                                 className={`text-lg font-semibold mb-2 group-hover:text-yellow-600 transition-colors duration-200
-                                  ${isCompleted
-                                    ? "text-gray-500 line-through decoration-2 decoration-green-400"
-                                    : "text-gray-900"
+                                  ${
+                                    isCompleted
+                                      ? "text-gray-500 line-through decoration-2 decoration-green-400"
+                                      : "text-gray-900"
                                   }`}
                               >
                                 {task.title}
                               </h3>
                               <p
-                                className={`text-sm ${isCompleted
+                                className={`text-sm ${
+                                  isCompleted
                                     ? "text-gray-400 line-through"
                                     : "text-gray-600"
-                                  }`}
+                                }`}
                               >
                                 {task.discription}
                               </p>
@@ -281,9 +310,10 @@ const Home = () => {
                                 />
                                 <div
                                   className={`w-11 h-6 rounded-full peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-yellow-300 peer
-                                    ${isCompleted
-                                      ? "bg-green-400/80"
-                                      : "bg-gray-200 peer-checked:bg-yellow-500"
+                                    ${
+                                      isCompleted
+                                        ? "bg-green-400/80"
+                                        : "bg-gray-200 peer-checked:bg-yellow-500"
                                     } after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full peer-checked:after:border-white`}
                                 ></div>
                               </label>
@@ -305,14 +335,16 @@ const Home = () => {
                               </span>
                             </div>
                             <span
-                              className={`text-xs px-3 py-1 rounded-full flex items-center gap-1 ${isCompleted
+                              className={`text-xs px-3 py-1 rounded-full flex items-center gap-1 ${
+                                isCompleted
                                   ? "bg-green-100 text-green-800 border border-green-200"
                                   : "bg-yellow-100 text-yellow-800 border border-yellow-200"
-                                }`}
+                              }`}
                             >
                               <CheckCircle
-                                className={`w-3 h-3 ${isCompleted ? "text-green-600" : ""
-                                  }`}
+                                className={`w-3 h-3 ${
+                                  isCompleted ? "text-green-600" : ""
+                                }`}
                               />
                               {isCompleted ? "Completed" : "Pending"}
                             </span>
